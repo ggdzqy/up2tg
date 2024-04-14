@@ -9,24 +9,31 @@
 		<title>upload image to https://telegra.ph/</title>
 		<style>
 		</style>
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"
-      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-      crossorigin="anonymous"></script>	</head>
+  </head>
 	<body>
-        <h1>upload image to https://telegra.ph/</h1>
-        <hr/>
-		<div class="container">
-            <form method="post" action="https://telegra.ph/upload" enctype="multipart/form-data" target="_blank">
-                <label for="select-file">Select Image(<5M):</label>
-                <input id="select-file" name="file0" type="file">
-                <input value="click to upload" type="submit">
-            </form>
-		</div>
-        <hr/>
-        <div>
-        <p>The url of the image below is <strong>https://telegra.ph/file/cad7038fe82e47f79c609.jpg<strong> </p>
-        <img src="https://telegra.ph/file/cad7038fe82e47f79c609.jpg" width=100%>
-        </div>
+    <h1>upload image to https://telegra.ph/</h1>
+    <hr/>
+    <div class="container">
+      <form id="myForm" method="post" action="https://telegra.ph/upload" enctype="multipart/form-data">
+        <label for="select-file">Select Image(<5M):</label>
+        <input id="select-file" name="file0" type="file">
+        <input value="click to upload" type="submit">
+      </form>
+    </div>
+    <hr/>
+    <div>
+    <p>The url of the image below is <strong>https://telegra.ph/file/cad7038fe82e47f79c609.jpg<strong> </p>
+    <img src="https://telegra.ph/file/cad7038fe82e47f79c609.jpg" width=100%>
+    </div>
 	</body>
 </html>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+<script>
+  $(function() {
+    $('#myForm').ajaxForm(function(res) {
+        // 处理Form表单请求的响应
+         console.log(res);
+    });
+  });
+</script>
