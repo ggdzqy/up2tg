@@ -47,7 +47,7 @@ $(function () {
     dataType: 'jsonp',
     jsonp: 'jsoncallback'
   }).done(function (result) {
-    console.log(result.photos.photo);
+    console.log(result.photos);
     var maxWidth = $(document.body).css('max-width')
     var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
     var carouselLinks = []
