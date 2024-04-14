@@ -45,7 +45,7 @@ $(function () {
       api_key: '7617adae70159d09ba78cfec73c13be3'
     },
     dataType: 'jsonp',
-    jsonp: 'jsoncallback'
+    //jsonp: 'jsoncallback'
   }).done(function (result) {
     console.log(result);
     var maxWidth = $(document.body).css('max-width')
