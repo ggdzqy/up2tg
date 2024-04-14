@@ -46,7 +46,8 @@ $(function () {
     },
     dataType: 'jsonp',
     jsonp: 'jsoncallback'
-  }).done(function (result) {
+  }).done(function (results) {
+    var result = JSON.parse(`${results}`);
     console.log(result);
     var maxWidth = $(document.body).css('max-width')
     var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
