@@ -31,65 +31,6 @@ $(function () {
     'o' // original dimensions
   ]
 
-  // Load demo images from Flickr:
-  $.ajax({
-    //url: 'https://tg-graph-69b.pages.dev/api/manage/list',//'https://api.flickr.com/services/rest/',
-    url: 'https://api.flickr.com/services/rest/',
-    data: {
-      // https://www.flickr.com/services/api/flickr.interestingness.getList.html
-      //method: 'GET',//'flickr.interestingness.getList',
-      method: 'flickr.interestingness.getList',
-      format: 'json',
-      extras: 'url_' + imageTypes.join(',url_'),
-      // eslint-disable-next-line camelcase
-      api_key: '7617adae70159d09ba78cfec73c13be3'
-    },
-    dataType: 'jsonp',
-    jsonp: 'jsoncallback'
-  }).done(function (result) {
-    console.log(result.photos);
-    var maxWidth = $(document.body).css('max-width')
-    var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
-    var carouselLinks = []
-    var linksContainer = $('#links')
-    // Add the demo images as links with thumbnails to the page:
-    $.each(result.photos.photo, function (_, photo) {
-      var thumbnail = $('<img>')
-        .prop('loading', 'lazy')
-        .prop('width', photo.width_sq)
-        .prop('height', photo.height_sq)
-        .prop('src', photo.url_sq)
-        .prop('alt', photo.title)
-      var srcset = []
-      $.each(imageTypes, function (_, type) {
-        var url = photo['url_' + type]
-        var width = photo['width_' + type]
-        if (url) {
-          srcset.push(url + ' ' + width + 'w')
-        }
-      })
-      srcset = srcset.join(',')
-      $('<a></a>')
-        .append(thumbnail)
-        .prop('title', photo.title)
-        .prop('href', photo.url_l)
-        .attr('data-srcset', srcset)
-        .attr('data-gallery', '')
-        .appendTo(linksContainer)
-      carouselLinks.push({
-        title: photo.title,
-        href: photo.url_l,
-        sizes: sizes,
-        srcset: srcset
-      })
-    })
-    // Initialize the Gallery as image carousel:
-    // eslint-disable-next-line new-cap
-    blueimp.Gallery(carouselLinks, {
-      container: '#blueimp-image-carousel',
-      carousel: true
-    })
-  })
 
 
   $.ajax({
@@ -103,8 +44,8 @@ $(function () {
       // eslint-disable-next-line camelcase
       api_key: '7617adae70159d09ba78cfec73c13be3'
     },
-    dataType: 'jsonp',
-    jsonp: 'jsoncallback'
+    //dataType: 'jsonp',
+    //jsonp: 'jsoncallback'
   }).done(function (result) {
     console.log(result);
     var maxWidth = $(document.body).css('max-width')
