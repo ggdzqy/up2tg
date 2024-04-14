@@ -6,3 +6,7 @@
 https://up2tg.pages.dev/*
   Access-Control-Allow-Origin: *
   X-Robots-Tag: noindex
+
+https://uploadtest.mixart.top/*
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
