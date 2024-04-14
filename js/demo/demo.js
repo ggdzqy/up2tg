@@ -44,8 +44,8 @@ $(function () {
       // eslint-disable-next-line camelcase
       api_key: '7617adae70159d09ba78cfec73c13be3'
     },
-    //dataType: 'jsonp',
-    //jsonp: 'jsoncallback'
+    dataType: 'jsonp',
+    jsonp: 'jsoncallback'
   }).done(function (result) {
     console.log(result);
     var maxWidth = $(document.body).css('max-width')
