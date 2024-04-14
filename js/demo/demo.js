@@ -33,21 +33,23 @@ $(function () {
 
   // Load demo images from Flickr:
   $.ajax({
-    url: 'https://tg-graph-69b.pages.dev/api/manage/list',//'https://api.flickr.com/services/rest/',
+    url: 'https://tg-graph-69b.pages.dev/api/manage/list',
+    //'https://api.flickr.com/services/rest/',
     //url: 'https://api.flickr.com/services/rest/',
     data: {
       // https://www.flickr.com/services/api/flickr.interestingness.getList.html
-      method: 'GET',//'flickr.interestingness.getList',
+      method: 'GET',
+      //'flickr.interestingness.getList',
       //method: 'flickr.interestingness.getList',
       format: 'json',
-      extras: 'url_' + imageTypes.join(',url_'),
+      extras: 'name' + imageTypes.join(',name_'),
       // eslint-disable-next-line camelcase
       api_key: '7617adae70159d09ba78cfec73c13be3'
     },
     dataType: 'jsonp',
     jsonp: 'jsoncallback'
   }).done(function (result) {
-    console.log(result.photos.photo);
+    console.log(result);
     var maxWidth = $(document.body).css('max-width')
     var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
     var carouselLinks = []
