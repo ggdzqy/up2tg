@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
 <html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
 		<title>upload image to https://telegra.ph/</title>
@@ -20,8 +20,7 @@
     </div>
     <hr/>
     <div>
-    <p>The url of the image below is <strong>https://telegra.ph/file/cad7038fe82e47f79c609.jpg<strong> </p>
-    <img src="https://telegra.ph/file/cad7038fe82e47f79c609.jpg" width=100%>
+    <div id="tips"></div>
     </div>
 	</body>
 </html>
@@ -30,8 +29,10 @@
 <script>
   $(function() {
     $('#myForm').ajaxForm(function(res) {
-        // 处理Form表单请求的响应
-         console.log(res);
+      $("#tips").text(message);
+      // 处理Form表单请求的响应
+      console.log(decodeURI("传回数据："+res));
+      //console.log(res);
     });
   });
 </script>
