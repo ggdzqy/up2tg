@@ -45,7 +45,7 @@ $(function () {
       api_key: '7617adae70159d09ba78cfec73c13be3'
     },
     dataType: 'jsonp',
-    //jsonp: 'jsoncallback'
+    jsonp: 'jsoncallback'
   }).done(function (result) {
     console.log(result);
     var maxWidth = $(document.body).css('max-width')
@@ -56,8 +56,8 @@ $(function () {
     $.each(result, function (index, photo) {
       var thumbnail = $('<img>')
         .prop('loading', 'lazy')
-        //.prop('width', photo.width_sq)
-        //.prop('height', photo.height_sq)
+        .prop('width', '75px')
+        .prop('height', '75px')
         .prop('src', photo['name'])
         .prop('alt', photo['Label'])
       var srcset = []
@@ -78,8 +78,8 @@ $(function () {
         .attr('data-gallery', '')
         .appendTo(linksContainer)
       carouselLinks.push({
-        title: photo.title,
-        href: photo.url_l,
+        title: photo['name'],
+        href: url,
         sizes: sizes,
         srcset: srcset
       })
