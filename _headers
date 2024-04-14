@@ -4,4 +4,5 @@
   X-Robots-Tag: nosnippet
 
 https://up2tg.pages.dev/*
+  Access-Control-Allow-Origin: *
   X-Robots-Tag: noindex
