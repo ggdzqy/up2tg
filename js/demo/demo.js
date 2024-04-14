@@ -42,7 +42,7 @@ $(function () {
       //'flickr.interestingness.getList',
       //method: 'flickr.interestingness.getList',
       format: 'json',
-      extras: 'name' + imageTypes.join(',name_'),
+      //extras: 'url_' + imageTypes.join(',url_'),
       // eslint-disable-next-line camelcase
       api_key: '7617adae70159d09ba78cfec73c13be3'
     },
@@ -55,13 +55,13 @@ $(function () {
     var carouselLinks = []
     var linksContainer = $('#links')
     // Add the demo images as links with thumbnails to the page:
-    $.each(result.photos.photo, function (_, photo) {
+    $.each(result, function (_, photo) {
       var thumbnail = $('<img>')
         .prop('loading', 'lazy')
-        .prop('width', photo.width_sq)
-        .prop('height', photo.height_sq)
-        .prop('src', photo.url_sq)
-        .prop('alt', photo.title)
+        //.prop('width', photo.width_sq)
+        //.prop('height', photo.height_sq)
+        .prop('src', photo.name)
+        .prop('alt', photo.metadata.Label)
       var srcset = []
       $.each(imageTypes, function (_, type) {
         var url = photo['url_' + type]
@@ -73,8 +73,8 @@ $(function () {
       srcset = srcset.join(',')
       $('<a></a>')
         .append(thumbnail)
-        .prop('title', photo.title)
-        .prop('href', photo.url_l)
+        .prop('title', photo.name)
+        .prop('href', photo.name)
         .attr('data-srcset', srcset)
         .attr('data-gallery', '')
         .appendTo(linksContainer)
