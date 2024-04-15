@@ -54,14 +54,15 @@ $(function () {
 	  // Add the demo images as links with thumbnails to the page:
 	  $.each(JSON.parse(results), function (index, photo) {
 		console.log(photo);
+		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name'];
 		var thumbnail = $('<img>')
 		  .prop('loading', 'lazy')
-		  .prop('width', '75px')
-		  .prop('height', '75px')
-		  .prop('src', photo['name'])
+		  .prop('width', '75')
+		  .prop('height', '75')
+		  .prop('src', url)
 		  .prop('alt', photo['Label'])
 		var srcset = [];
-		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name'];
+		
 		//$.each(photo['metadata'], function (_, type) {
 		//  var url = photo['url_' + type]
 		//  var width = photo['width_' + type]
