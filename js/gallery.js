@@ -45,7 +45,7 @@ $(function () {
 		api_key: '7617adae70159d09ba78cfec73c13be3'
 	  },
 	}).done(function (results) {
-	  console.log(result);
+	  console.log(results);
 	  var maxWidth = $(document.body).css('max-width')
 	  var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
 	  var carouselLinks = []
