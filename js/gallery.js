@@ -45,29 +45,31 @@ $(function () {
 		api_key: '7617adae70159d09ba78cfec73c13be3'
 	  },
 	}).done(function (results) {
+	  
+	  var maxWidth = $(document.body).css('max-width');
+	  var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw';
+	  var carouselLinks = [];
+	  var linksContainer = $('#links');
 	  console.log(results);
-	  var maxWidth = $(document.body).css('max-width')
-	  var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
-	  var carouselLinks = []
-	  var linksContainer = $('#links')
 	  // Add the demo images as links with thumbnails to the page:
 	  $.each(JSON.parse(results), function (index, photo) {
+		console.log(photo);
 		var thumbnail = $('<img>')
 		  .prop('loading', 'lazy')
 		  .prop('width', '75px')
 		  .prop('height', '75px')
 		  .prop('src', photo['name'])
 		  .prop('alt', photo['Label'])
-		var srcset = []
-		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name']
+		var srcset = [];
+		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name'];
 		//$.each(photo['metadata'], function (_, type) {
 		//  var url = photo['url_' + type]
 		//  var width = photo['width_' + type]
-		  if (url) {
-			srcset.push(url)// + ' ' + width + 'w')
-		  }
+		//  if (url) {
+		//	srcset.push(url)// + ' ' + width + 'w')
+		//  }
 		//})
-		srcset = srcset.join(',')
+		srcset = srcset.join(',');
 		$('<a></a>')
 		  .append(thumbnail)
 		  .prop('title', photo['name'])
