@@ -1,5 +1,16 @@
+/*
+ * blueimp Gallery Demo JS
+ * https://github.com/blueimp/Gallery
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ */
 
-export async function onRequest(context) {
+/* global blueimp, $ */
+async function onRequest(context) {
   // Contents of context object
   const {
     request, // same as existing Worker API
