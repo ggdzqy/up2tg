@@ -51,7 +51,7 @@ $(function () {
 	  var carouselLinks = []
 	  var linksContainer = $('#links')
 	  // Add the demo images as links with thumbnails to the page:
-	  $.each(results, function (index, photo) {
+	  $.each(JSON.parse(results), function (index, photo) {
 		var thumbnail = $('<img>')
 		  .prop('loading', 'lazy')
 		  .prop('width', '75px')
