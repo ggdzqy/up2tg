@@ -31,66 +31,63 @@ $(function () {
     'o' // original dimensions
   ]
 
+  const value = env.img_url.list();
+  console.log(value)
+  //let res=[]
+  //for (let i in value.keys){
+    //add to res
+    //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
+    //let tmp = {
+    //  name: value.keys[i].name,
+    //  TimeStamp: value.keys[i].metadata.TimeStamp,
+    //  ListType: value.keys[i].metadata.ListType,
+    //  rating_label: value.keys[i].metadata.rating_label,
+    //}
+    //res.push(tmp)
+  //}
+  const result = JSON.stringify(value.keys);
 
-
-  $.ajax({
-    url: 'https://tg-graph-69b.pages.dev/api/manage/list',
-    data: {
-      // https://www.flickr.com/services/api/flickr.interestingness.getList.html
-      //method: 'GET',//'flickr.interestingness.getList',
-      //method: 'flickr.interestingness.getList',
-      format: 'json',
-      extras: 'url_' + imageTypes.join(',url_'),
-      // eslint-disable-next-line camelcase
-      api_key: '7617adae70159d09ba78cfec73c13be3'
-    },
-    dataType: 'jsonp',
-    jsonp: 'jsoncallback'
-  }).done(function (results) {
-    var result = JSON.parse(results);
-    console.log(result);
-    var maxWidth = $(document.body).css('max-width')
-    var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
-    var carouselLinks = []
-    var linksContainer = $('#links')
-    // Add the demo images as links with thumbnails to the page:
-    $.each(result, function (index, photo) {
-      var thumbnail = $('<img>')
-        .prop('loading', 'lazy')
-        .prop('width', '75px')
-        .prop('height', '75px')
-        .prop('src', photo['name'])
-        .prop('alt', photo['Label'])
-      var srcset = []
-      var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name']
-      //$.each(photo['metadata'], function (_, type) {
-      //  var url = photo['url_' + type]
-      //  var width = photo['width_' + type]
-        if (url) {
-          srcset.push(url)// + ' ' + width + 'w')
-        }
-      //})
-      srcset = srcset.join(',')
-      $('<a></a>')
-        .append(thumbnail)
-        .prop('title', photo['name'])
-        .prop('href', url)
-        .attr('data-srcset', srcset)
-        .attr('data-gallery', '')
-        .appendTo(linksContainer)
-      carouselLinks.push({
-        title: photo['name'],
-        href: url,
-        sizes: sizes,
-        srcset: srcset
-      })
+  var maxWidth = $(document.body).css('max-width')
+  var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw'
+  var carouselLinks = []
+  var linksContainer = $('#links')
+  // Add the demo images as links with thumbnails to the page:
+  $.each(result, function (index, photo) {
+    var thumbnail = $('<img>')
+      .prop('loading', 'lazy')
+      .prop('width', '75px')
+      .prop('height', '75px')
+      .prop('src', photo['name'])
+      .prop('alt', photo['Label'])
+    var srcset = []
+    var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name']
+    //$.each(photo['metadata'], function (_, type) {
+    //  var url = photo['url_' + type]
+    //  var width = photo['width_' + type]
+      if (url) {
+        srcset.push(url)// + ' ' + width + 'w')
+      }
+    //})
+    srcset = srcset.join(',')
+    $('<a></a>')
+      .append(thumbnail)
+      .prop('title', photo['name'])
+      .prop('href', url)
+      .attr('data-srcset', srcset)
+      .attr('data-gallery', '')
+      .appendTo(linksContainer)
+    carouselLinks.push({
+      title: photo['name'],
+      href: url,
+      sizes: sizes,
+      srcset: srcset
     })
-    // Initialize the Gallery as image carousel:
-    // eslint-disable-next-line new-cap
-    blueimp.Gallery(carouselLinks, {
-      container: '#blueimp-image-carousel',
-      carousel: true
-    })
+  })
+  // Initialize the Gallery as image carousel:
+  // eslint-disable-next-line new-cap
+  blueimp.Gallery(carouselLinks, {
+    container: '#blueimp-image-carousel',
+    carousel: true
   })
 
   // Initialize the Gallery as video carousel:
