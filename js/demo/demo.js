@@ -1,18 +1,16 @@
-/*
- * blueimp Gallery Demo JS
- * https://github.com/blueimp/Gallery
- *
- * Copyright 2013, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * https://opensource.org/licenses/MIT
- */
 
-/* global blueimp, $ */
-
-$(function () {
-  'use strict'
+export async function onRequest(context) {
+  // Contents of context object
+  const {
+    request, // same as existing Worker API
+    env, // same as existing Worker API
+    params, // if filename includes [id] or [[path]]
+    waitUntil, // same as ctx.waitUntil in existing Worker API
+    next, // used for middleware or to fetch assets
+    data, // arbitrary space for passing data between middlewares
+  } = context;
+  console.log(env);
+  console.log(params.code);
 
   // Flickr image types:
   var imageTypes = [
@@ -139,4 +137,4 @@ $(function () {
   $('#fullscreen').change(function () {
     $('#blueimp-gallery').data('fullscreen', this.checked)
   })
-})
+}
