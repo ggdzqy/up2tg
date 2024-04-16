@@ -13,6 +13,7 @@
 		<style>
       @media (prefers-color-scheme: light) {
         :root {
+          --text-color: black;
           --box-color: white;
           --main-bg-background: white;
           --mani-bg-color: white;
@@ -20,6 +21,7 @@
       }
       @media (prefers-color-scheme: dark) {
         :root {
+          --text-color: white;
           --box-color: black;
           --main-bg-background: black;
           --mani-bg-color: black;
@@ -27,6 +29,10 @@
       }
       @media (prefers-color-scheme: no-preference) {
       }
+      h2 { color: var(--text-color);
+        text-shadow: 1px 1px #777;
+      }
+      h3 label { color: var(--text-color);}
       body {
         background: var(--main-bg-background);
         color: var(--mani-bg-color);
@@ -38,7 +44,7 @@
         flex: 1;
         border: 1px solid var(--box-color);
       }
-      .imgbox_s{
+      .imgbox_q{
         width:160px;
         height: 160px;
         object-fit: cover;
