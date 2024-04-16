@@ -50,10 +50,9 @@ $(function () {
 	  var sizes = '(min-width: ' + maxWidth + ') ' + maxWidth + ', 100vw';
 	  var carouselLinks = [];
 	  var linksContainer = $('#links');
-	  console.log(results);
+	  //console.log(results);
 	  // Add the demo images as links with thumbnails to the page:
 	  $.each(JSON.parse(results), function (index, photo) {
-		console.log(photo);
 		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name'];
 		var thumbnail = $('<img>')
 		  .prop('loading', 'lazy')

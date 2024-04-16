@@ -4,35 +4,110 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
-		<title>upload image to https://telegra.ph/</title>
+    <link rel="stylesheet" href="css/blueimp-gallery.min.css" />
+		<title>MyGallery</title>
+    <link rel="stylesheet" href="css/blueimp-gallery.css" />
+    <link rel="stylesheet" href="css/blueimp-gallery-indicator.css" />
+    <link rel="stylesheet" href="css/blueimp-gallery-video.css" />
+    <link rel="stylesheet" href="css/demo/demo.css" />
 		<style>
+      @media (prefers-color-scheme: light) {
+        :root {
+          --text-color: black;
+          --box-color: white;
+          --main-bg-background: white;
+          --mani-bg-color: white;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --text-color: white;
+          --box-color: black;
+          --main-bg-background: black;
+          --mani-bg-color: black;
+        }
+      }
+      @media (prefers-color-scheme: no-preference) {
+      }
+      h2 { color: var(--text-color);
+        text-shadow: 1px 1px #777;
+      }
+      h3,label { color: var(--text-color);}
+      body {
+        background: var(--main-bg-background);
+        color: var(--mani-bg-color);
+      }
+      .imgbox_t{
+        width:75px;
+        height: 75px;
+        object-fit: cover;
+        flex: 1;
+        border: 1px solid var(--box-color);
+      }
+      .imgbox_q{
+        width:152px;
+        height: 152px;
+        object-fit: cover;
+        flex: 1;
+        border: 1px solid var(--box-color);
+      }
 		</style>
   </head>
 	<body>
-    <h1>upload image to https://telegra.ph/</h1>
-    <hr/>
-    <div class="container">
-      <form id="myForm" method="post" action="https://telegra.ph/upload" enctype="multipart/form-data">
-        <label for="select-file">Select Image(<5M):</label>
-        <input id="select-file" name="file0" type="file">
-        <input value="click to upload" type="submit">
-      </form>
+    <h2>Lightbox image gallery</h2>
+    <p>
+      <h3>Fullscreen</h3>
+      <label>Fullscreen</label>
+    </p>
+    <!-- The container for the list of example images -->
+    <div id="links" class="links"></div>
+    <!-- The Gallery as lightbox dialog -->
+    <div
+      id="blueimp-gallery"
+      class="blueimp-gallery"
+      aria-label="image gallery"
+      aria-modal="true"
+      role="dialog"
+    >
+      <div class="slides" aria-live="polite"></div>
+      <h3 class="title"></h3>
+      <a
+        class="prev"
+        aria-controls="blueimp-gallery"
+        aria-label="previous slide"
+        aria-keyshortcuts="ArrowLeft"
+      ></a>
+      <a
+        class="next"
+        aria-controls="blueimp-gallery"
+        aria-label="next slide"
+        aria-keyshortcuts="ArrowRight"
+      ></a>
+      <a
+        class="close"
+        aria-controls="blueimp-gallery"
+        aria-label="close"
+        aria-keyshortcuts="Escape"
+      ></a>
+      <a
+        class="play-pause"
+        aria-controls="blueimp-gallery"
+        aria-label="play slideshow"
+        aria-keyshortcuts="Space"
+        aria-pressed="false"
+        role="button"
+      ></a>
+      <ol class="indicator"></ol>
     </div>
-    <hr/>
-    <div>
-    <div id="tips"></div>
-    </div>
-	</body>
+    <script src="js/blueimp-helper.js"></script>
+    <script src="js/blueimp-gallery.js"></script>
+    <script src="js/blueimp-gallery-fullscreen.js"></script>
+    <script src="js/blueimp-gallery-indicator.js"></script>
+    <script src="js/blueimp-gallery-video.js"></script>
+    <script src="js/blueimp-gallery-vimeo.js"></script>
+    <script src="js/blueimp-gallery-youtube.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/jquery.blueimp-gallery.js"></script>
+    <script src="js/gallery.js"></script>
+  </body>
 </html>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-<script>
-  $(function() {
-    $('#myForm').ajaxForm(function(res) {
-      $("#tips").text(message);
-      // 处理Form表单请求的响应
-      console.log(decodeURI("传回数据："+res));
-      //console.log(res);
-    });
-  });
-</script>
