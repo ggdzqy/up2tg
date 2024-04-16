@@ -1,8 +1,5 @@
 
-const newHomepagePathName = "/g"
-
-export function onRequest(context) {
-  const url = new URL(context.request.url);
+export async function onRequest(context) {
   // Contents of context object
   const {
     request, // same as existing Worker API
@@ -12,15 +9,14 @@ export function onRequest(context) {
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-  console.log(env);
-  console.log(JSON.stringify(context.params.date));
-  //return new Response(JSON.stringify(context.params.date));
-
-  url.pathname = newHomepagePathName;
-  return context.env.ASSETS.fetch(url)
-  const asset = context.env.ASSETS.fetch(url);
-  let response = new Response(asset.body, asset);
-    //   response.headers.append("Set-Cookie", `${cookieName}=${version}; path=/`)
-
-  return response;
+  //get the request url
+  const url = new URL(request.url);
+  if (context.params.date){
+    console.log(JSON.stringify(context.params.date));
+    return new Response(JSON.stringify(context.params.date));
+  }
+  else{
+    //redirect to index page
+    return Response.redirect(url.origin+"/index.html", 302)
+  }
 }
