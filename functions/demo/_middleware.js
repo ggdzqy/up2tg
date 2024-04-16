@@ -7,11 +7,6 @@ async function errorHandling(context) {
 }
 
 function authentication(context) {
-  const refer = context.request.headers.get('Referer');
-  console.log(refer);
-  if (refer != "admin@example.com") {
-    return new Response(refer, { status: 403 });
-  }
   // Contents of context object
   const {
     request, // same as existing Worker API
@@ -21,9 +16,6 @@ function authentication(context) {
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-  console.log(env);
-  console.log(params.code);
-  
   return context.next();
 }
 
