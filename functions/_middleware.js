@@ -1,4 +1,4 @@
-//const newHomepagePathName = "/g"
+const newHomepagePathName = "/index.html"
 
 const abTest = async (context) => {
   const url = new URL(context.request.url)
@@ -11,8 +11,8 @@ const abTest = async (context) => {
     // // is cookie set?
     // if (cookie && cookie.includes(`${cookieName}=new`)) {
     //   // pass the request to /test
-    //   url.pathname = newHomepagePathName
-    //   return context.env.ASSETS.fetch(url)
+       url.pathname = newHomepagePathName
+       return context.env.ASSETS.fetch(url)
     // } else {
     //   const percentage = Math.floor(Math.random() * 100)
     //   let version = "current" // default version
