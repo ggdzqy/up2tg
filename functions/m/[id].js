@@ -8,10 +8,16 @@ export async function onRequestPost(context) {
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-  context.request;
-  const url = new URL(request.url);
   console.log(env)
-  console.log(params)
-
+  console.log(params.id)
+  //read the metadata
+  const value = await env.img_url.getWithMetadata(params.id);
+  console.log(value)
+  //"metadata":{"TimeStamp":19876541,"ListType":"None","rating_label":"None"}
+  //change the metadata
+  //value.metadata.ListType = "Block"
+  //await env.img_url.put(params.id,"",{metadata: value.metadata});
+  const info = JSON.stringify(value.metadata);
+  return new Response(info);
 
 }
