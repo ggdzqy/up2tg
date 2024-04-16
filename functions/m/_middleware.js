@@ -21,14 +21,7 @@ async function errorHandling(context) {
     console.log(' -----------------------')
     console.log('onRequestPost url:', url)
     console.log(' -----------------------')
-    return new Response('You need to login.', {
-      status: 401,
-      headers: {
-      // Prompts the user for credentials.
-      'WWW-Authenticate': 'Basic realm="my scope", charset="UTF-8"',
-      },
-  });
-  
+
     return context.next();
 }
 
