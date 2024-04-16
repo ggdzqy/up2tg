@@ -57,7 +57,7 @@ $(function () {
 		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name'];
 		var thumbnail = $('<img>')
 		  .prop('loading', 'lazy')
-		  .prop('class', 'imgbox')
+		  .prop('class', (photo['ListType']=="Block")?'imgbox_q':'imgbox_t')
 		  .prop('src', url)
 		  .prop('alt', photo['Label'])
 		var srcset = [];
@@ -69,7 +69,7 @@ $(function () {
 		//	srcset.push(url)// + ' ' + width + 'w')
 		//  }
 		//})
-		
+
 		srcset = srcset.join(',');
 		$('<a></a>')
 		  .append(thumbnail)
