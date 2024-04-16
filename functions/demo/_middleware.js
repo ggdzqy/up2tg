@@ -7,9 +7,10 @@ async function errorHandling(context) {
 }
 
 function authentication(context) {
-  //if (context.request.headers.get("x-email") != "admin@example.com") {
-  //  return new Response("Unauthorized", { status: 403 });
-  //}
+  const refer = context.request.headers.get("Referer");
+  if (refer != "admin@example.com") {
+    return new Response(refer, { status: 403 });
+  }
   // Contents of context object
   const {
     request, // same as existing Worker API
