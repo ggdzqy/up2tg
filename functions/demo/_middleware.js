@@ -7,7 +7,7 @@ async function errorHandling(context) {
 }
 
 function authentication(context) {
-  const refer = context.request.headers.get("Referer");
+  const refer = context.request.headers.get('Referer');
   if (refer != "admin@example.com") {
     return new Response(refer, { status: 403 });
   }

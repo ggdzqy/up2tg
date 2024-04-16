@@ -40,7 +40,7 @@ $(function () {
 		method: 'POST',//'flickr.interestingness.getList',
 		//method: 'flickr.interestingness.getList',
 		format: 'json',
-		extras: 'url_' + imageTypes.join(',url_'),
+		//extras: 'url_' + imageTypes.join(',url_'),
 		// eslint-disable-next-line camelcase
 		api_key: '7617adae70159d09ba78cfec73c13be3'
 	  },
