@@ -37,7 +37,7 @@ $(function () {
 	  url: '/demo/list',
 	  data: {
 		// https://www.flickr.com/services/api/flickr.interestingness.getList.html
-		//method: 'GET',//'flickr.interestingness.getList',
+		method: 'POST',//'flickr.interestingness.getList',
 		//method: 'flickr.interestingness.getList',
 		format: 'json',
 		extras: 'url_' + imageTypes.join(',url_'),
