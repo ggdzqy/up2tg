@@ -57,7 +57,7 @@ $(function () {
 		var url = 'https://tg-graph-69b.pages.dev/file/' + photo['name'];
 		var thumbnail = $('<img>')
 		  .prop('loading', 'lazy')
-		  .prop('class', (photo['ListType']=="Block")?'imgbox_q':'imgbox_t')
+		  .prop('class', ((photo['ListType']=="None")?'imgbox_t':'imgbox_q'))
 		  .prop('src', url)
 		  .prop('alt', photo['Label'])
 		var srcset = [];
