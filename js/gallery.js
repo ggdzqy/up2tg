@@ -32,7 +32,7 @@ $(function () {
 	]
 
 	$.ajax({
-	  url: '/api/list',
+	  url: '/data/list',
 	  data: {
 		// https://www.flickr.com/services/api/flickr.interestingness.getList.html
 		method: 'POST',//'flickr.interestingness.getList',
