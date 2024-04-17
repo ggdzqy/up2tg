@@ -12,16 +12,20 @@ export async function onRequest(context) {
   } = context;
   //get the request url
   const url = new URL(request.url);
-  if (context.params.date){
-    console.log(JSON.stringify(context.params.date));
-    //return new Response(JSON.stringify(context.params.date));
-    //return Response.redirect(url.origin+"/_index.html", 302)
-    // pass the request to /test
-    url.pathname = newHomepagePathName
-    return context.env.ASSETS.fetch(url)
-  }
-  else{
-    //redirect to index page
-    return Response.redirect(url.origin+"/_index.html", 302)
+  if (url.pathname === "/") {
+    return context.next();
+  }else{
+    if (context.params.date) {
+      console.log(JSON.stringify(context.params.date));
+      //return new Response(JSON.stringify(context.params.date));
+      //return Response.redirect(url.origin+"/_index.html", 302)
+      // pass the request to /test
+      url.pathname = newHomepagePathName
+      return new Response("/test", { status: 301 });
+    }
+    else{
+      //redirect to index page
+      return Response.redirect(url.origin+"/_index.html", 302)
+    }
   }
 }
