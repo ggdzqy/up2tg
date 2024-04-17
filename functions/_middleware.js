@@ -11,6 +11,6 @@ export async function onRequest(context) {
   } = context;
   //get the request url
   const url = new URL(request.url);
-  console.log(JSON.stringify(context.params.date));
+  console.log(JSON.stringify(context.params));
   return context.next();
 }
