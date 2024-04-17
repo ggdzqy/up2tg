@@ -1,3 +1,4 @@
+const newHomepagePathName = "/test"
 
 export async function onRequest(context) {
   // Contents of context object
@@ -13,8 +14,11 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   if (context.params.date){
     console.log(JSON.stringify(context.params.date));
-    return new Response(JSON.stringify(context.params.date));
-    return Response.redirect(url.origin+"/_index.html", 302)
+    //return new Response(JSON.stringify(context.params.date));
+    //return Response.redirect(url.origin+"/_index.html", 302)
+    // pass the request to /test
+    url.pathname = newHomepagePathName
+    return context.env.ASSETS.fetch(url)
   }
   else{
     //redirect to index page
