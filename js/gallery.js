@@ -31,8 +31,18 @@ $(function () {
 	  'o' // original dimensions
 	]
   
-  
-  
+	$.post("/api/list",
+	{
+		"id": siteid
+	},
+	function (result) {
+		if (result)
+		{
+			data = JSON.parse(result);  
+			console.log(data);
+		}
+	});
+
 	$.ajax({
 	  url: '/api/list',
 	  data: {

@@ -14,9 +14,10 @@ export async function onRequest(context) {
   if (context.params.date){
     console.log(JSON.stringify(context.params.date));
     return new Response(JSON.stringify(context.params.date));
+    return Response.redirect(url.origin+"/_index.html", 302)
   }
   else{
     //redirect to index page
-    return Response.redirect(url.origin+"/index.html", 302)
+    return Response.redirect(url.origin+"/_index.html", 302)
   }
 }
